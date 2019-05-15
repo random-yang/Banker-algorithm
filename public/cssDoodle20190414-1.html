@@ -1,0 +1,75 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css doodle first show</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 12px;
+        }
+
+        body {
+            overflow: hidden;
+            background: var(--my-white);
+        }
+
+        :root {
+            --my-purple: rgba(79, 1, 117, 1);
+            --my-blue: rgba(4, 224, 187, 0.105);
+            --my-green: rgba(171, 241, 83, 1);
+            --my-grey: #E2E2E2;
+            --my-pink: rgba(219, 19, 129, 0.105);
+            --black-hole: rgba(253, 51, 0, 0.109);
+
+            --my-black: #000000;
+            --my-white: #FFFFFF;
+
+
+            --css-hook: ( :doodle {
+                @grid: 160,1 / 80vmax 25vmax;
+                background: var(--my-white);
+                /* background: var(--my-black); */
+                font-family: sans-serif;
+
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate3d(-50%, -50%, 0);
+
+                /* box-shadow: 1px 1px 0 0 rgba(0,0,0,1), 5px 15px 50px 0 rgba(0,0,0,.5); */
+
+                overflow:hidden;
+            }
+            @size: @r(60%, 200%) 100%;
+            background: rgba(0,0,0,@r(0,1));
+            /* background: rgba(255,255,255,@r(0,1)); */
+            transform: translate3d(@r(-10%, 10%), 0, 0);
+            );
+        }
+    </style>
+</head>
+
+<body>
+    <css-doodle id='bd'>
+        @use: var(--css-hook);
+    </css-doodle>
+</body>
+<script src="./lib/css-doodle.js"></script>
+<script>
+    const cssDoodle = document.getElementById('bd');
+    window.onclick = (e) => {
+        cssDoodle.update();
+    }
+</script>
+
+</html>

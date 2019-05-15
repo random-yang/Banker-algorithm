@@ -16,6 +16,12 @@ const members = [
     name: 'Shannon Jackson',
     email: 'shannon@gmail.com',
     status: 'active'
+  },
+  {
+    id: 4,
+    name: 'DeCoder',
+    email: 'decoderyang@gmail.com',
+    status: 'inactive'
   }
 ];
 
