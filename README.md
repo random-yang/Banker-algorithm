@@ -1,22 +1,23 @@
-# Express Crash Course
+# 银行家算法
 
-> Files for the YouTube crash course
+算法是最主要的。不过是利用express快速搭建了一个可以和算法交互验证的小型页面。
 
-- Setup & Install / Simple Server
-- Simple API
-- Routes, Request & Response
-- Express Router
-- Static Files
-- Template Engine Setup With Views
-- Middleware
-- Nodemon
+## 简单介绍
+启动服务后，可以在localhost:5000访问应用。
+- 查看系统资源Btn >>> 返回系统当前的资源状况
+    - avalibale: 当前系统中未被分配的资源
+    - allocation: 各个进程的资源持有情况
+    - need: 各个进程归还所有资源，仍需要的资源
+- 查看所有安全序列Btn >>> 返回系统当前状态下所有可能的安全序列
+- 请求资源Btn >>> 在填写了正确的“进程号”和“请求数目”之后，提交返回资源请求结果
 
-## Quick Start
+## Install dependencies
 
-```bash
-# Install dependencies
+```zsh
 npm install
+```
 
-# Serve on localhost:5000
-npm run dev
+## Run serve
+```zsh
+npm run dev // 这样可以不必重启服务，自动刷新
 ```

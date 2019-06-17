@@ -1,7 +1,7 @@
 {
-  "name": "express_crash_course",
+  "name": "bank-algorithm",
   "version": "1.0.0",
-  "description": "",
+  "description": "银行家算法的验证",
   "main": "index.js",
   "scripts": {
     "start": "node index",
