@@ -1,11 +1,12 @@
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const logger = require('./middleware/logger');
 
 const app = express();
 
 // Init middleware
-// app.use(logger);
+app.use(logger);
 
 // Handlebars Middleware
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
@@ -22,12 +23,6 @@ app.get('/', (req, res) =>
     title: '银行家算法',
   })
 );
-
-// Set static folder
-// 如果将静态文件放在动态之前，则路径 / 会渲染静态页面
-// app.use(express.static('public'));
-// 使用绝对路径更安全
-// app.use(express.static(path.join(__dirname, 'public')));
 
 // Members API Routes
 app.use('/api/bank', require('./routes/api/bank'));
