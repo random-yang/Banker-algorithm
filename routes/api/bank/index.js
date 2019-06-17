@@ -1,30 +1,37 @@
-let fs = require('fs');
-let unit = require('./js/utils');
-let locationResource = require('./js/locationResource');
+const fs = require('fs');
+const path = require('path');
+// let utils = require('./js/utils');
+const getAllSafeOrder = require('./js/getAllSafeOrder');
+const locationResource = require('./js/locationResource');
 const router = require('express').Router();
+const Resource = require('./js/Resource');
 
 // 从json文件读取初始数据
-let data = fs.readFileSync(`${__dirname}/data/data1.json`, 'utf-8');
-data = JSON.parse(data);
+const FILEPATH = './data/data1.json';
+let data = fs.readFileSync(path.join(__dirname, FILEPATH), 'utf-8');
+let resource = new Resource(data);
 
+// 系统资源请求
 router.get('/resource', (req, res) => {
-    let { avaliable, allocation, need } = data;
+    let { avaliable, allocation, need } = resource;
     allocation = allocation.map((item, index) => ({ processID: index, allocation: item }));
     need = need.map((item, index) => ({ processID: index, need: item }));
     res.render('resource', {
         title: '系统资源',
-        data: { avaliable, allocation, need }
+        resource: { avaliable, allocation, need }
     });
 });
 
+// 安全序列请求
 router.get('/getSafeOrders', (req, res) => {
-    let safeOrders = unit.getAllSafeOrder(data).map((order, index) => ({ index: index, order: order }));
+    let safeOrders = getAllSafeOrder(resource).map((order, index) => ({ index: index, order: order }));
     res.render('safeOrders', {
         title: '所有的安全序列',
         safeOrders
     })
 });
 
+// 请求资源分配POST
 router.post('/result', (req, res) => {
     // 拿到返回值
     let { processID, resourceNum } = req.body;
@@ -43,7 +50,7 @@ router.post('/result', (req, res) => {
     } else {
         resourceNum = resourceNum.split(',').map(item => parseInt(item));
     }
-    if(processID >= data.allocation.length || resourceNum.length !== data.avaliable.length) {
+    if(processID >= resource.allocation.length || resourceNum.length !== resource.avaliable.length) {
         res.render('result/inputError', {
             title: '输入错误',
             message: '非法数据的请求'
@@ -52,7 +59,7 @@ router.post('/result', (req, res) => {
     }
 
     // 执行函数判断能否分配资源
-    let isSuccess = locationResource(data, processID, resourceNum);
+    let isSuccess = locationResource(resource, processID, resourceNum);
 
     res.render('result/result', {
         title: '请求结果',

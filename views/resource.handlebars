@@ -4,7 +4,7 @@
 <table class="table">
     <tbody>
         <tr>
-            <td>{{data.avaliable}}</td>
+            <td>{{resource.avaliable}}</td>
         </tr>
 </table>
 <h5>Allocation</h5>
@@ -16,7 +16,7 @@
         </tr>
     </thead>
     <tbody>
-        {{#each data.allocation}}
+        {{#each resource.allocation}}
         <tr>
             <td>{{this.processID}}</td>
             <td>{{this.allocation}}</td>
@@ -32,7 +32,7 @@
         </tr>
     </thead>
     <tbody>
-        {{#each data.need}}
+        {{#each resource.need}}
         <tr>
             <td>{{this.processID}}</td>
             <td>{{this.need}}</td>

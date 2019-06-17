@@ -1,24 +1,24 @@
 /**
  * 
- * @param {object} data 
+ * @param {Resource} resource 
  * @returns {boolean}
  * @description
  * 对于某个时刻的系统状态
  * 检查是否存在死锁
  */
-function isSafe(data) {
-    data = JSON.parse(JSON.stringify(data)); // 不改变外部变量
+function isSafe(resource) {
+    resource = JSON.parse(JSON.stringify(resource)); // 不改变外部变量
     let allocation = []; // 存放各个进程已分配的资源
     let need = []; // 存放各个进程还需要分配的资源
     let work = []; // 存放当前系统还可用的资源
     let finish = []; // 标记能否完成
-    let processN = data.allocation.length; // 进程数
+    let processN = resource.allocation.length; // 进程数
     // let safeOrder = [];
 
     // 初始化
-    allocation = data.allocation;
-    need = data.need;
-    work = data.avaliable;
+    allocation = resource.allocation;
+    need = resource.need;
+    work = resource.avaliable;
     finish = Array(processN).fill(false);
 
     // 算法运行
