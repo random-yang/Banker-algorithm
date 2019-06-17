@@ -1,20 +1,35 @@
+<style>
+  .form-wapper{
+    padding: 15px;
+    background: rgb(250, 249, 249);
+    border-radius: 8px;
+  }
+</style>
 <h1 class="text-center mb-3">{{title}}</h1>
-<form action="/api/members" method="POST" class="mb-4">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" name="name" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" name="email" class="form-control">
-  </div>
-  <input type="submit" value="Add Member" class="btn btn-primary btn-block">
-</form>
-<h4>Members</h4>
-<ul class="list-group">
-  {{#each members}}
-  <li class="list-group-item">{{this.name}}: {{this.email}}</li>
-  {{/each}}
-</ul>
 
-<a href="/api/members" class="btn btn-light mt-4">Visit API</a>
+<h4>系统资源</h4>
+<form action="/api/bank/resource" method="GET" class="mb-4">
+  <input type="submit" value="查看系统资源" class="btn btn-primary btn-block">
+</form>
+
+<h4>查看所有安全序列</h4>
+<form action="/api/bank/getSafeOrders" method="GET" class="mb-4">
+  <input type="submit" value="查看所有安全序列" class="btn btn-primary btn-block">
+</form>
+
+<h4>请求资源</h4>
+
+<form action="/api/bank/result" method="POST" class="mb-4">
+  <div class="form-wapper">
+    <div class="form-group">
+      <label for="name">进程号</label>
+      <input type="text" name="processID" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="email">请求资源数目（依次输入，逗号分割）</label>
+      <input type="text" name="resourceNum" class="form-control">
+    </div>
+    <input type="submit" value="请求资源" class="btn btn-primary btn-block">
+  </div>
+
+</form>

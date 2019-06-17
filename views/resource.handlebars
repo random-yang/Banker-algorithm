@@ -1,0 +1,44 @@
+<h1 class="text-center mb-3">{{title}}</h1>
+
+<h5>Avaliable</h5>
+<table class="table">
+    <tbody>
+        <tr>
+            <td>{{data.avaliable}}</td>
+        </tr>
+</table>
+<h5>Allocation</h5>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">进程号</th>
+            <th scope="col">资源情况</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data.allocation}}
+        <tr>
+            <td>{{this.processID}}</td>
+            <td>{{this.allocation}}</td>
+        </tr>
+        {{/each}}
+</table>
+<h5>Need</h5>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">进程号</th>
+            <th scope="col">资源情况</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data.need}}
+        <tr>
+            <td>{{this.processID}}</td>
+            <td>{{this.need}}</td>
+        </tr>
+        {{/each}}
+</table>
+<form action="/" method="GET" class="mb-4">
+  <input type="submit" value="返回" class="btn btn-primary btn-block">
+</form>

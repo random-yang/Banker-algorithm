@@ -1,0 +1,19 @@
+<h1 class="text-center mb-3">{{title}}</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">进程号</th>
+            <th scope="col">安全序列</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each safeOrders}}
+        <tr>
+            <td>{{this.index}}</td>
+            <td>{{this.order}}</td>
+        </tr>
+        {{/each}}
+</table>
+<form action="/" method="GET" class="mb-4">
+  <input type="submit" value="返回" class="btn btn-primary btn-block">
+</form>

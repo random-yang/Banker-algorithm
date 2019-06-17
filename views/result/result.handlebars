@@ -1,0 +1,9 @@
+<h1 class="text-center mb-3">{{title}}</h1>
+{{#if isSuccess}}
+    <div class="alert alert-success" role="alert">{{message}}</div>
+{{else}}
+    <div class="alert alert-danger" role="alert">{{message}}</div>
+{{/if}}
+<form action="/" method="GET" class="mb-4">
+  <input type="submit" value="返回" class="btn btn-primary btn-block">
+</form>
