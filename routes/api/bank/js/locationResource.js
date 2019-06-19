@@ -11,6 +11,14 @@ function updateResource(resource, processID, request){
     resource.avaliable = resource.avaliable.map((item, index) => item - request[index]);
     resource.allocation[processID] = resource.allocation[processID].map((item, index) => item + request[index]);
     resource.need[processID] = resource.need[processID].map((item, index) => item - request[index]);
+
+    // 如果need全部为0
+    if(resource.need[processID].every(item => item === 0)) {
+        resource.avaliable = resource.avaliable.map((item, index) => {
+            return item + resource.allocation[processID][index];
+        });
+        resource.allocation[processID] = resource.allocation[processID].map(item => 0);
+    }
 }
 
 /**

@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-// let utils = require('./js/utils');
 const getAllSafeOrder = require('./js/getAllSafeOrder');
 const locationResource = require('./js/locationResource');
 const router = require('express').Router();
@@ -25,6 +24,7 @@ router.get('/resource', (req, res) => {
 // 安全序列请求
 router.get('/getSafeOrders', (req, res) => {
     let safeOrders = getAllSafeOrder(resource).map((order, index) => ({ index: index, order: order }));
+    console.log(safeOrders);
     res.render('safeOrders', {
         title: '所有的安全序列',
         safeOrders
